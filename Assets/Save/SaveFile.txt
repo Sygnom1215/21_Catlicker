@@ -1,0 +1,18 @@
+﻿{
+    "userName": "응애",
+    "energy": 0,
+    "itemList": [
+        {
+            "itemName": "고양이 인형",
+            "amount": 0,
+            "price": 150,
+            "cPs": 1
+        },
+        {
+            "itemName": "깃털 낚싯대",
+            "amount": 0,
+            "price": 1200,
+            "cPs": 5
+        }
+    ]
+}
