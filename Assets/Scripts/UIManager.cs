@@ -1,18 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Text churuText = null;
+    [SerializeField]
+    private GameObject upgradePanelTemplate = null;
+
+    private List<UpgradePanel> upgradePanelList = new List<UpgradePanel>();
+    private void Start()
     {
-        
+        UpdateChuruPanel();
+        CreatePanels();
+    }
+    private void CreatePanels()
+    {
+        GameObject newPanel = null;
+        UpgradePanel newPanelComponent = null;
+
+        foreach (Item item in GameManager.Instance.CurrentUser.soldierList)
+        {
+            newPanel = Instantiate(upgradePanelTemplate, upgradePanelTemplate.transform.parent);
+            newPanelComponent = newPanel.GetComponent<UpgradePanel>();
+            newPanelComponent.SetValue(item);
+            newPanel.SetActive(true);
+            upgradePanelList.Add(newPanelComponent);
+        }
+    }
+    public void OnClickBeaker()
+    {
+        GameManager.Instance.CurrentUser.energy++;
+        //beakerAnimator.Play("Click");
+        UpdateChuruPanel();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateChuruPanel()
     {
-        
+        chruText.text = string.Format("{0} √Ú∏£", GameManager.Instance.CurrentUser.energy);
     }
 }

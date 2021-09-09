@@ -7,6 +7,20 @@ public class GameManager : Monosingleton<GameManager>
 {
     [SerializeField]
     private User user = null;
+    public User CurrentUser { get { return user; } }
+
+    private UIManager uiManager = null;
+    public UIManager UI
+    {
+        get
+        {
+            if (uiManager == null)
+            {
+                uiManager = GetComponent<UIManager>();
+            }
+            return uiManager;
+        }
+    }
 
     private string SAVE_PATH = "";
     private string SAVE_FILENAME = "/SaveFile.txt";
@@ -18,11 +32,23 @@ public class GameManager : Monosingleton<GameManager>
         {
             Directory.CreateDirectory(SAVE_PATH);
         }
+        LoadFromJson();
+
     }
     private void Start()
     {
         LoadFromJson();
         InvokeRepeating("SaveToJson", 1f, 60f);
+        InvokeRepeating("EarnChuruPerSecond", 0f, 1f);
+
+    }
+    private void EarnChuruPerSecond()
+    {
+        foreach (Item item in user.itemList)
+        {
+            user.energy += item.cPs * item.amount;
+        }
+        UI.UpdateItemPanel();
     }
     private void LoadFromJson()
     {
@@ -32,6 +58,7 @@ public class GameManager : Monosingleton<GameManager>
             user = JsonUtility.FromJson<User>(json);
         }
     }
+
     private void SaveToJson()
     {
         string json = JsonUtility.ToJson(user, true);
