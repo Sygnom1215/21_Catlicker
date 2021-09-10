@@ -4,6 +4,6 @@ using System.Collections.Generic;
 public class User
 {
     public string userName;
-    public long energy;
+    public long churu;
     public List<Item> itemList = new List<Item>();
 }

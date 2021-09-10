@@ -5,23 +5,39 @@ using UnityEngine.UI;
 
 public class UpgradePanel : MonoBehaviour
 {
-    //[SerializeField]
-    //private Text itemNameText = null;
-    //[SerializeField]
-    //private Text amountText = null;
-    //[SerializeField]
-    //private Text priceText = null;
-    //[SerializeField]
-    //private Button purchaseButton = null;
+    [SerializeField]
+    private Text itemNameText = null;
+    [SerializeField]
+    private Text amountText = null;
+    [SerializeField]
+    private Text priceText = null;
+    [SerializeField]
+    private Button purchaseButton = null;
 
+    private Item item = null;
 
-    void Start()
+    public void SetValue(Item item)
     {
-        
+        this.item = item;
+        UpdateValues();
     }
-
-    void Update()
+    public void UpdateValues()
     {
-        
+        itemNameText.text = item.itemName;
+        amountText.text = string.Format("{0}", item.amount);
+        priceText.text = string.Format("{0} √Ú∏£", item.price);
+    }
+    public void OnClickPurchase()
+    {
+        if (GameManager.Instance.CurrentUser.churu < item.price)
+        {
+            return;
+        }
+
+        GameManager.Instance.CurrentUser.churu -= item.price;
+        item.amount++;
+        item.price = (long)(item.price * 1.25f);
+        UpdateValues();
+        GameManager.Instance.UI.UpdateChuruPanel();
     }
 }

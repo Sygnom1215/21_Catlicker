@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
         GameObject newPanel = null;
         UpgradePanel newPanelComponent = null;
 
-        foreach (Item item in GameManager.Instance.CurrentUser.soldierList)
+        foreach (Item item in GameManager.Instance.CurrentUser.itemList)
         {
             newPanel = Instantiate(upgradePanelTemplate, upgradePanelTemplate.transform.parent);
             newPanelComponent = newPanel.GetComponent<UpgradePanel>();
@@ -32,13 +32,13 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickBeaker()
     {
-        GameManager.Instance.CurrentUser.energy++;
+        GameManager.Instance.CurrentUser.churu++;
         //beakerAnimator.Play("Click");
         UpdateChuruPanel();
     }
 
     public void UpdateChuruPanel()
     {
-        chruText.text = string.Format("{0} √Ú∏£", GameManager.Instance.CurrentUser.energy);
+        churuText.text = string.Format("{0} √Ú∏£", GameManager.Instance.CurrentUser.churu);
     }
 }

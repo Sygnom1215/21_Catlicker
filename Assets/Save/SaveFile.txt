@@ -1,6 +1,6 @@
 ﻿{
     "userName": "응애",
-    "energy": 0,
+    "churu": 0,
     "itemList": [
         {
             "itemName": "고양이 인형",

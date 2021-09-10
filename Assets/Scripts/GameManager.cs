@@ -46,9 +46,9 @@ public class GameManager : Monosingleton<GameManager>
     {
         foreach (Item item in user.itemList)
         {
-            user.energy += item.cPs * item.amount;
+            user.churu += item.cPs * item.amount;
         }
-        UI.UpdateItemPanel();
+        UI.UpdateChuruPanel();
     }
     private void LoadFromJson()
     {

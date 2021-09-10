@@ -8,7 +8,7 @@ public class Monosingleton<T> : MonoBehaviour where T : MonoBehaviour
     private static object locker = new object();
 
     private static T instance = null;
-    private static T Instance
+    public static T Instance
     {
         get
         {
