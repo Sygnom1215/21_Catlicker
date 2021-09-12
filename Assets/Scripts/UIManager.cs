@@ -8,7 +8,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text churuText = null;
     [SerializeField]
+    private Animator catMove1Animator = null;
+    [SerializeField]
     private GameObject upgradePanelTemplate = null;
+
 
     private List<UpgradePanel> upgradePanelList = new List<UpgradePanel>();
     private void Start()
@@ -33,7 +36,7 @@ public class UIManager : MonoBehaviour
     public void OnClickBeaker()
     {
         GameManager.Instance.CurrentUser.churu++;
-        //beakerAnimator.Play("Click");
+        catMove1Animator.Play("CatMoveAnimation");
         UpdateChuruPanel();
     }
 
