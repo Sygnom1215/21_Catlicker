@@ -1,14 +1,14 @@
 ﻿{
     "userName": "응애",
-    "churu": 2065,
+    "churu": 1,
     "itemList": [
         {
             "itemName": "고양이 인형",
-            "amount": 1,
-            "price": 187,
+            "amount": 0,
+            "price": 150,
             "cPs": 1,
             "itemSprite": {
-                "instanceID": 17060
+                "instanceID": 24660
             }
         },
         {
@@ -17,7 +17,7 @@
             "price": 1200,
             "cPs": 5,
             "itemSprite": {
-                "instanceID": 17062
+                "instanceID": 24654
             }
         }
     ]

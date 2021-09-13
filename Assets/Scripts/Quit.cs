@@ -10,7 +10,7 @@ public class Quit : MonoBehaviour
             GameQuit();
     }
 
-    private void GameQuit()
+    public void GameQuit()
     {
         Application.Quit();
     }
