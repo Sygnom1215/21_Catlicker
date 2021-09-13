@@ -1,23 +1,23 @@
 ﻿{
     "userName": "응애",
-    "churu": 285,
+    "churu": 2065,
     "itemList": [
         {
             "itemName": "고양이 인형",
-            "amount": 4,
-            "price": 363,
+            "amount": 1,
+            "price": 187,
             "cPs": 1,
             "itemSprite": {
-                "instanceID": 26248
+                "instanceID": 17060
             }
         },
         {
             "itemName": "깃털 낚싯대",
-            "amount": 1,
-            "price": 1500,
+            "amount": 0,
+            "price": 1200,
             "cPs": 5,
             "itemSprite": {
-                "instanceID": 27514
+                "instanceID": 17062
             }
         }
     ]
