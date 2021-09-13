@@ -26,7 +26,7 @@ public class GameManager : Monosingleton<GameManager>
     private string SAVE_FILENAME = "/SaveFile.txt";
     private void Awake()
     {
-        SAVE_PATH = Application.dataPath + "/Save";
+        SAVE_PATH = Application.persistentDataPath + "/Save";
         // Application.persistentDataPath
         if (!Directory.Exists(SAVE_PATH))
         {
