@@ -21,12 +21,28 @@ public class GameManager : Monosingleton<GameManager>
             return uiManager;
         }
     }
+    private Canvas canvas = null;
+    public Canvas Canvas
+    {
+        get
+        {
+            if (canvas == null)
+            {
+                canvas = FindObjectOfType<Canvas>();
+            }
+            return canvas;
+        }
+    }
+
+    [SerializeField]
+    private Transform poolManager = null;
+    public Transform Pool { get { return poolManager; } }
 
     private string SAVE_PATH = "";
     private string SAVE_FILENAME = "/SaveFile.txt";
     private void Awake()
     {
-        SAVE_PATH = Application.persistentDataPath + "/Save";
+        SAVE_PATH = Application.dataPath + "/Save";
         // Application.persistentDataPath
         if (!Directory.Exists(SAVE_PATH))
         {

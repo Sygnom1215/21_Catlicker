@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     private Animator catMove1Animator = null;
     [SerializeField]
     private GameObject upgradePanelTemplate = null;
+    [SerializeField]
+    private ChuruText churuTextTemplate = null;
 
 
     private List<UpgradePanel> upgradePanelList = new List<UpgradePanel>();
@@ -37,6 +39,17 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.CurrentUser.churu++;
         catMove1Animator.Play("CatMoveAnimation");
+
+        ChuruText newText = null;
+        if (GameManager.Instance.Pool.childCount > 0)
+        {
+            newText = GameManager.Instance.Pool.GetChild(0).GetComponent<ChuruText>();
+        }
+        else
+        {
+            newText = Instantiate(churuTextTemplate, GameManager.Instance.Canvas.transform).GetComponent<ChuruText>();
+        }
+        newText.Show(Input.mousePosition);
         UpdateChuruPanel();
     }
 

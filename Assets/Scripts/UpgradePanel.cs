@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UpgradePanel : MonoBehaviour
 {
     [SerializeField]
+    private Image itemImage = null;
+    [SerializeField]
     private Text itemNameText = null;
     [SerializeField]
     private Text amountText = null;
@@ -14,7 +16,8 @@ public class UpgradePanel : MonoBehaviour
     [SerializeField]
     private Button purchaseButton = null;
     [SerializeField]
-    private Image itemImage = null;
+    private Sprite[] itemSprite = null;
+
 
     private Item item = null;
 
@@ -25,10 +28,10 @@ public class UpgradePanel : MonoBehaviour
     }
     public void UpdateValues()
     {
+        itemImage.sprite = itemSprite[item.itemNumber];
         itemNameText.text = item.itemName;
         amountText.text = string.Format("{0}", item.amount);
         priceText.text = string.Format("{0} √Ú∏£", item.price);
-        itemImage.sprite = item.itemSprite;
     }
     public void OnClickPurchase()
     {
