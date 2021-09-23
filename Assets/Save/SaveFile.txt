@@ -1,6 +1,6 @@
 ﻿{
     "userName": "응애",
-    "churu": 257,
+    "churu": 272,
     "itemList": [
         {
             "itemNumber": 0,
