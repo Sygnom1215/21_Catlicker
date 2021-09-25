@@ -19,9 +19,9 @@ public class ChuruText : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
         RectTransform rectTransform = GetComponent<RectTransform>();
-        float targetPositionY = rectTransform.anchoredPosition.y + 100f; // 숫자가 위로 올라가는 목표값 지정
+        float targetPositionY = rectTransform.anchoredPosition.y + 100f;
 
-        churuText.DOFade(0f, 0.5f).OnComplete(() => Despawn()); //람다식 표현 ( 아무것도 안 넣은 괄호는 void )
+        churuText.DOFade(0f, 0.5f).OnComplete(() => Despawn());
         rectTransform.DOAnchorPosY(targetPositionY, 0.5f);
     }
 

@@ -13,8 +13,8 @@ public class UpgradePanel : MonoBehaviour
     private Text amountText = null;
     [SerializeField]
     private Text priceText = null;
-    [SerializeField]
-    private Button purchaseButton = null;
+    //[SerializeField]
+    //private Button purchaseButton = null;
     [SerializeField]
     private Sprite[] itemSprite = null;
 
@@ -45,5 +45,6 @@ public class UpgradePanel : MonoBehaviour
         item.price = (long)(item.price * 1.25f);
         UpdateValues();
         GameManager.Instance.UI.UpdateChuruPanel();
+        GameManager.Instance.UI.ItemAppearance(item.itemNumber);
     }
 }

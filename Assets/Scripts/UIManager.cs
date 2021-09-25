@@ -13,13 +13,19 @@ public class UIManager : MonoBehaviour
     private GameObject upgradePanelTemplate = null;
     [SerializeField]
     private ChuruText churuTextTemplate = null;
+    [SerializeField]
+    private GameObject[] itemObjects = null;
+    //[SerializeField]
+    //private GameObject items = null;
 
+    //private GameObject[] item = null;
 
     private List<UpgradePanel> upgradePanelList = new List<UpgradePanel>();
     private void Start()
     {
         UpdateChuruPanel();
         CreatePanels();
+        //item = items.GetComponentsInChildren<GameObject>();
     }
     private void CreatePanels()
     {
@@ -38,7 +44,7 @@ public class UIManager : MonoBehaviour
     public void OnClickBeaker()
     {
         GameManager.Instance.CurrentUser.churu++;
-        catMove1Animator.Play("CatMoveAnimation");
+        catMove1Animator.Play("CatMoveAnim");
 
         ChuruText newText = null;
         if (GameManager.Instance.Pool.childCount > 0)
@@ -56,5 +62,10 @@ public class UIManager : MonoBehaviour
     public void UpdateChuruPanel()
     {
         churuText.text = string.Format("{0} √Ú∏£", GameManager.Instance.CurrentUser.churu);
+    }
+
+    public void ItemAppearance(int num) //bool isShow
+    {
+        itemObjects[num].SetActive(true);
     }
 }
