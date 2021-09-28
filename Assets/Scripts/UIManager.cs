@@ -38,6 +38,10 @@ public class UIManager : MonoBehaviour
             newPanelComponent = newPanel.GetComponent<UpgradePanel>();
             newPanelComponent.SetValue(item);
             newPanel.SetActive(true);
+            if(item.amount>0)
+            {
+                ItemAppearance(item.itemNumber);
+            }
             upgradePanelList.Add(newPanelComponent);
         }
     }
@@ -67,5 +71,8 @@ public class UIManager : MonoBehaviour
     public void ItemAppearance(int num) //bool isShow
     {
         itemObjects[num].SetActive(true);
+
     }
+
+    
 }
