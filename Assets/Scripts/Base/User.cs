@@ -6,4 +6,5 @@ public class User
     public string userName;
     public long churu;
     public List<Item> itemList = new List<Item>();
+    public List<Character> charList = new List<Character>();
 }

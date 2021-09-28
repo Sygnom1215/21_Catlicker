@@ -10,11 +10,30 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Animator catMove1Animator = null;
     [SerializeField]
+    private ScrollRect scrollRect = null;
+    [SerializeField]
     private GameObject upgradePanelTemplate = null;
+    [SerializeField]
+    private GameObject characterUpgradePanelTemplate = null;
     [SerializeField]
     private ChuruText churuTextTemplate = null;
     [SerializeField]
     private GameObject[] itemObjects = null;
+    [SerializeField]
+    private Sprite[] character = null;
+    [SerializeField]
+    private SpriteRenderer charImage = null;
+    [SerializeField]
+    private RectTransform[] contants = null;
+
+    public Sprite[] CharacterSprite
+    {
+        get
+        {
+            return character;
+        }
+    }
+
     //[SerializeField]
     //private GameObject items = null;
 
@@ -31,6 +50,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject newPanel = null;
         UpgradePanel newPanelComponent = null;
+        CharacterUpgradePanel newCharPanelComponent = null;
 
         foreach (Item item in GameManager.Instance.CurrentUser.itemList)
         {
@@ -38,13 +58,21 @@ public class UIManager : MonoBehaviour
             newPanelComponent = newPanel.GetComponent<UpgradePanel>();
             newPanelComponent.SetValue(item);
             newPanel.SetActive(true);
-            if(item.amount>0)
+            if (item.amount > 0)
             {
                 ItemAppearance(item.itemNumber);
             }
             upgradePanelList.Add(newPanelComponent);
         }
+        foreach (Character character in GameManager.Instance.CurrentUser.charList)
+        {
+            newPanel = Instantiate(characterUpgradePanelTemplate, characterUpgradePanelTemplate.transform.parent);
+            newCharPanelComponent = newPanel.GetComponent<CharacterUpgradePanel>();
+            newCharPanelComponent.SetValue(character);
+            newPanel.SetActive(true);
+        }
     }
+
     public void OnClickBeaker()
     {
         GameManager.Instance.CurrentUser.churu++;
@@ -74,5 +102,21 @@ public class UIManager : MonoBehaviour
 
     }
 
-    
+    public void OnClickShowPanel(int num)
+    {
+        scrollRect.content = contants[num];
+        for (int i = 0; i < contants.Length; i++)
+        {
+            if (num == i)
+            {
+                contants[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                contants[i].gameObject.SetActive(false);
+            }
+
+
+        }
+    }
 }
