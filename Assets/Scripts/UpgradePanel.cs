@@ -13,6 +13,8 @@ public class UpgradePanel : MonoBehaviour
     private Text amountText = null;
     [SerializeField]
     private Text priceText = null;
+    [SerializeField]
+    private Text cPsText = null;
     //[SerializeField]
     //private Button purchaseButton = null;
     [SerializeField]
@@ -32,6 +34,7 @@ public class UpgradePanel : MonoBehaviour
         itemNameText.text = item.itemName;
         amountText.text = string.Format("{0}", item.amount);
         priceText.text = string.Format("{0} √Ú∏£", item.price);
+        cPsText.text = string.Format("√ ¥Á »πµÊ √Ú∏£: {0}", item.cPs);
     }
     public void OnClickPurchase()
     {
