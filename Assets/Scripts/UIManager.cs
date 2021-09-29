@@ -34,17 +34,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //[SerializeField]
-    //private GameObject items = null;
-
-    //private GameObject[] item = null;
 
     private List<UpgradePanel> upgradePanelList = new List<UpgradePanel>();
     private void Start()
     {
         UpdateChuruPanel();
         CreatePanels();
-        //item = items.GetComponentsInChildren<GameObject>();
     }
     private void CreatePanels()
     {
@@ -76,7 +71,7 @@ public class UIManager : MonoBehaviour
     public void OnClickBeaker()
     {
         GameManager.Instance.CurrentUser.churu++;
-        catMove1Animator.Play("CatMoveAnim");
+        catMove1Animator.Play(GameManager.Instance.CurrentUser.charNum==0?"CatMoveAnim":"CatMoveAnim2");
 
         ChuruText newText = null;
         if (GameManager.Instance.Pool.childCount > 0)
@@ -116,7 +111,13 @@ public class UIManager : MonoBehaviour
                 contants[i].gameObject.SetActive(false);
             }
 
-
         }
+    }
+
+    public void ChangeSprite(int num)
+    {
+        GameManager.Instance.CurrentUser.charNum = num;
+        charImage.sprite = character[num];
+
     }
 }

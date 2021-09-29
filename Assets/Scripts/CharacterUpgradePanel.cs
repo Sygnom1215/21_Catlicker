@@ -13,6 +13,8 @@ public class CharacterUpgradePanel : MonoBehaviour
     private Text priceText = null;
     [SerializeField]
     private Text cPcText = null;
+    [SerializeField]
+    private Button button = null;
 
 
     private Character character = null;
@@ -29,6 +31,7 @@ public class CharacterUpgradePanel : MonoBehaviour
         levelText.text = string.Format("{0}", character.level);
         priceText.text = string.Format("{0} √Ú∏£", character.price);
         cPcText.text = string.Format("≈¨∏Ø¥Á »πµÊ √Ú∏£: {0}", character.cPc);
+        button.interactable = character.level != 0;
     }
     public void OnClickPurchase()
     {
@@ -42,7 +45,12 @@ public class CharacterUpgradePanel : MonoBehaviour
         character.price = (long)(character.price * 1.25f);
         UpdateValues();
         GameManager.Instance.UI.UpdateChuruPanel();
-        GameManager.Instance.UI.ItemAppearance(character.charNumber);
+    }
+
+    public void ChangeSprite()
+    {
+        Debug.Log(character.charNumber);
+        GameManager.Instance.UI.ChangeSprite(character.charNumber);
     }
 
 }
