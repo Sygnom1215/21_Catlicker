@@ -5,7 +5,13 @@ using UnityEngine;
 public class Character
 {
     public int charNumber;
-    public long cPc;
+    public long cPc
+    {
+        get
+        {
+            return Mathf.Max(charNumber * 3, 1);
+        }
+    }
     public int level;
     public long price;
 }

@@ -49,7 +49,6 @@ public class CharacterUpgradePanel : MonoBehaviour
 
     public void ChangeSprite()
     {
-        Debug.Log(character.charNumber);
         GameManager.Instance.UI.ChangeSprite(character.charNumber);
     }
 

@@ -11,7 +11,7 @@ public class ChuruText : MonoBehaviour
     public void Show(Vector2 mousePosition)
     {
         churuText = GetComponent<Text>();
-        churuText.text = string.Format("+{0}", 1);
+        churuText.text = string.Format("+{0}", GameManager.Instance.CurrentUser.charList[GameManager.Instance.CurrentUser.charNum].cPc);
 
         churuText.gameObject.SetActive(true);
         churuText.transform.SetParent(GameManager.Instance.Canvas.transform);

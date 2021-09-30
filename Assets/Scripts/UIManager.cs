@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text churuText = null;
     [SerializeField]
-    private Animator catMove1Animator = null;
+    private Animator[] catMove1Animator = null;
     [SerializeField]
     private ScrollRect scrollRect = null;
     [SerializeField]
@@ -21,8 +21,6 @@ public class UIManager : MonoBehaviour
     private GameObject[] itemObjects = null;
     [SerializeField]
     private Sprite[] character = null;
-    [SerializeField]
-    private SpriteRenderer charImage = null;
     [SerializeField]
     private RectTransform[] contants = null;
 
@@ -40,6 +38,7 @@ public class UIManager : MonoBehaviour
     {
         UpdateChuruPanel();
         CreatePanels();
+        ChangeSprite(GameManager.Instance.CurrentUser.charNum);
     }
     private void CreatePanels()
     {
@@ -68,10 +67,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void OnClickBeaker()
+    public void OnClickCat()
     {
-        GameManager.Instance.CurrentUser.churu++;
-        catMove1Animator.Play(GameManager.Instance.CurrentUser.charNum==0?"CatMoveAnim":"CatMoveAnim2");
+        GameManager.Instance.CurrentUser.churu += GameManager.Instance.CurrentUser.charList[GameManager.Instance.CurrentUser.charNum].cPc;
+        catMove1Animator[GameManager.Instance.CurrentUser.charNum].Play("CatMoveAnim");
 
         ChuruText newText = null;
         if (GameManager.Instance.Pool.childCount > 0)
@@ -117,7 +116,16 @@ public class UIManager : MonoBehaviour
     public void ChangeSprite(int num)
     {
         GameManager.Instance.CurrentUser.charNum = num;
-        charImage.sprite = character[num];
-
+        for(int i=0; i<catMove1Animator.Length; i++)
+        {
+            if(num==i)
+            {
+                catMove1Animator[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                catMove1Animator[i].gameObject.SetActive(false);
+            }
+        }
     }
 }
